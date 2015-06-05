@@ -1,0 +1,48 @@
+<div class="zmodule_content panel" id="zmodule_header_<@ ModuleName @>">
+    <div class="panel-heading">
+        <img src="<@ ModuleIcon @>" width="35" height="35" border="0" alt="<@ ModuleName @>">
+
+        <div class="zmodule_title">
+            <@ ModuleName @>
+        </div>
+
+        <div class="zmodule_desc" id="zmodule_desc_<@ ModuleName @>"><@ ModuleDesc @></div>
+
+    </div>
+	
+	<@ Result @>
+
+    <div class="zform_wrapper">
+        <h2><: Send mail to users :></h2>
+        <form action="./?module=Mass_mail&action=Send" method="post">
+            <table class="table table-striped">
+				<tr>
+                    <th><: Package :>:</th>
+                    <td>
+                        <select name="inPackage" id="inPackage">
+                            <option value="" selected="selected">-- Select a package --</option>
+                            <% loop PackageList %>
+                            <option value="<& packageid &>"><& packagename &></option>
+                            <% endloop %>
+						<option value="ALL">ALL Users</option>
+                        </select>
+                    </td>
+                </tr>
+				<tr>
+					<th><: Subject :>:</th>
+					<td><input type="text" name="inSubject" id="inSubject" value="" /></td>
+                <tr>
+                    <th><: message :>:</th>
+                    <td><textarea name="inMessage" id="inMessage" rows="3" cols="80" /></textarea></td>
+                </tr>
+                <tr>
+                    <th colspan="2" align="right">
+                        <button class="button-loader add-row btn btn-primary" type="submit" ><: Send Mail :></button>
+                    </th>
+                </tr>
+            </table>
+				<@ CSFR_Tag @>
+        </form>
+    </div>
+
+</div>
